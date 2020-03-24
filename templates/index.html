@@ -1,0 +1,27 @@
+<!doctype html>
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+{% block nav %}
+<div>
+  <a class="button button-primary" href="/add">Add a new book</a>
+  <a class="button button-primary" href="/search">Search my inventory</a>
+  <a class="button button-primary" href="/books">See all my books</a>
+</div>
+{% endblock %}
+<h1 class="user-action">BOOKS TO READ IN 2020</h1>
+<form action="" method="get" id="nameForm">
+  <div>
+    <label id="user" for="username">Your Name</label>
+    <input name="username" type="text" id="username" class="">
+  </div>
+  <div>
+    <input type="submit" value="Submit" class="button-primary">
+  </div>
+</form>
+<script type="text/javascript" src="{{ url_for('static', filename='js/script.js')}}"></script>
+{% endblock %}

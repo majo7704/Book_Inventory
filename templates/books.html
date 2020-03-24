@@ -1,0 +1,49 @@
+<!doctype html>
+
+{% extends "layout.html" %}
+
+{% block title %}
+Books
+{% endblock %}
+
+{% block body %}
+{% block nav %}
+<div>
+  <a class="button button-primary" href="/add">Add a new book</a>
+  <a class="button button-primary" href="/search">Search my inventory</a>
+  <a class="button button-primary" href="/">Books page</a>
+</div>
+{% endblock %}
+<h1>INVENTORY OF MY BOOKS</h1>
+<form id="book-form">
+  <div>
+    <label for="search">Search By Title, Author or Date</label>
+    <input placeholder="Ex. Kingdom" name="search" type="text" id="search" class="u-full-width">
+  </div>
+  <!-- <div>
+    <input type="submit" value="Submit" class="button-primary u-full-width">
+  </div> -->
+</form>
+<table class="u-full-width">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="book-list">
+    {% for book in books %}
+    <tr id="book-row">
+      <td id="title-col">{{book[0]}}</td>
+      <td id="author-col">{{book[1]}}</td>
+      <td id="date-col">{{book[2]}}</td>
+      <td><a href="#" class="delete">X</a></td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+<script type="text/javascript" src="{{ url_for('static', filename='js/books.js')}}"></script>
+{% endblock %}

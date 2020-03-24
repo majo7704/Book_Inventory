@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends "layout.html" %} {% block title %} Add a book {% endblock %} {% block
+body %} {% block nav %}
+<div>
+  <a class="button button-primary" href="/">Home page</a>
+  <a class="button button-primary" href="/search">Search my inventory</a>
+  <a class="button button-primary" href="/books">See all my books</a>
+</div>
+{% endblock %}
+<h1>ADD A NEW BOOK</h1>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert error" role="alert">
+  {{message}}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form action="" method="get" id="book-form">
+  <div>
+    <label for="title">Title</label>
+    <input name="title" type="text" id="title" class="u-full-width" />
+  </div>
+  <div>
+    <label for="author">Author</label>
+    <input name="author" type="text" id="author" class="u-full-width" value="" />
+  </div>
+  <div>
+    <label for="date">Date of addition</label>
+    <input name="date" type="date" id="date" class="u-full-width" value="" />
+  </div>
+  <div>
+    <input type="submit" value="Submit" class="button-primary u-full-width" />
+  </div>
+</form>
+<!-- <script
+  type="text/javascript"
+  src="{{ url_for('static', filename='js/add.js')}}"
+></script> -->
+
+{% endblock %}

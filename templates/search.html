@@ -1,0 +1,56 @@
+<!doctype html>
+{% extends "layout.html" %}
+
+{% block title %}
+Search a book
+{% endblock %}
+
+{% block body %}
+{% block nav %}
+<div>
+  <a class="button button-primary" href="/">Home page</a>
+  <a class="button button-primary" href="/add">Add a book</a>
+  <a class="button button-primary" href="/books">See all my books</a>
+</div>
+{% endblock %}
+<h1>SEARCH FOR A BOOK</h1>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert error" role="alert">
+  {{message}}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form action="/search" method="get" id="book-form">
+  <div>
+    <label for="search">Search By Title or Author</label>
+    <input placeholder="Ex. Kingdom" name="search" type="text" id="search" class="u-full-width">
+  </div>
+  <div>
+    <input type="submit" value="Submit" class="button-primary u-full-width">
+  </div>
+</form>
+<table class="u-full-width">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody id="book-list">
+    {% for book in books %}
+    <tr>
+      <td>{{book[0]}}</td>
+      <td>{{book[1]}}</td>
+      <td>{{book[2]}}</td>
+
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+<!-- <script type="text/javascript" src="{{ url_for('static', filename='js/search.js')}}"></script> -->
+{% endblock %}
